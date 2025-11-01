@@ -1,53 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width,initial-scale=1" />
-  <title>Jinu Kpop - Tech & KPDH Fan</title>
-  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jinu Kpop</title>
+  <link rel="stylesheet" href="style.css" />
 </head>
 <body>
-  <!-- Welcome screen -->
-  <div id="welcome" class="screen active">
-    <div class="welcome-inner">
-      <h1>Welcome to Jinu Kpop 🌌</h1>
-      <button id="enterBtn" class="btn">Enter</button>
+  <!-- Welcome Page -->
+  <section id="welcome">
+    <div class="welcome-content">
+      <h1>Welcome to Jinu Kpop 💫</h1>
+      <button id="enterBtn">Enter</button>
     </div>
-  </div>
+  </section>
 
-  <!-- Main content -->
-  <main id="main" class="screen">
-    <div class="stars" aria-hidden="true"></div>
+  <!-- Main Page -->
+  <section id="main">
+    <canvas id="stars"></canvas>
+    <div class="content">
+      <img src="assets/pfp.png" alt="Profile Photo" class="pfp" />
+      <h1>Jinu Kpop</h1>
+      <h2>Tech Lover & KPDH Fanatic</h2>
 
-    <div class="container">
-      <img src="assets/pfp.png" alt="Profile" class="profile" />
-      <h1 class="title">Jinu Kpop</h1>
-      <h2 class="subtitle">Tech Lover & KPDH Fanatic</h2>
+      <div class="about">
+        <p><strong>Hey, I’m Jinu!</strong> Tech runs through my veins — every gadget, app, and breakthrough fascinates me. Technology isn’t just what I do; it’s how I see the world.</p>
+        <p>I’m positive, open-minded, and don’t have time for negativity. Keep it kind, or keep walking!</p>
+        <p>I love <strong>KPDH (K-Pop Demon Hunters)</strong> from Sony Animation — the style and energy are everything. Favorite color? Sky blue, calm yet limitless.</p>
+        <p>I’m not perfect, but I’m learning every day. That’s what keeps life real. Stick around — explore my world of tech, creativity, and fun!</p>
+      </div>
 
-      <section class="about">
-        <p><strong>Hey, I’m Jinu!</strong></p>
-        <p>Tech runs through my veins. Whenever there’s a new gadget, app, or breakthrough, I’m on it—testing, exploring, and geeking out like there’s no tomorrow. Technology isn’t just what I do; it’s how I see the world.</p>
-        <p>I’m friendly, positive, and open-minded, but here’s the deal: life’s too short for negativity, so I don’t have time for hate or toxic vibes. Keep it kind, or keep walking!</p>
-        <p>Big fan alert: I absolutely love <strong>KPDH (K-Pop Demon Hunter)</strong> from Sony Animation. Its energy, story, and style? Legendary. Oh, and my favorite color? Sky blue—calm, limitless, and inspiring, just like how I try to approach life.</p>
-        <p>Am I perfect? Nope. Like everyone, I stumble, learn, and grow every day. But that’s what makes life exciting—and keeps things real.</p>
-        <p>This space is where I share my tech obsessions, discoveries, and ideas—all served with a dash of positivity and curiosity. So stick around, explore, and let’s see what’s possible together!</p>
-      </section>
+      <div class="links">
+        <a href="https://discord.gg/UEFJc6AdS9" target="_blank">Discord</a>
+        <a href="https://github.com/Jinu-Kpop" target="_blank">GitHub</a>
+        <a href="https://open.spotify.com/user/31dqjjdh6z7iv6h2uicfxpzorwpi" target="_blank">Spotify</a>
+        <a href="https://open.spotify.com/playlist/6NzQaVaofrf9kpRCx0sKkj" target="_blank">KPDH Playlist</a>
+      </div>
 
-      <nav class="links">
-        <a class="btn" href="https://discord.gg/UEFJc6AdS9" target="_blank" rel="noopener">Discord</a>
-        <a class="btn" href="https://github.com/Jinu-Kpop" target="_blank" rel="noopener">GitHub</a>
-        <a class="btn" href="https://open.spotify.com/user/31dqjjdh6z7iv6h2uicfxpzorwpi" target="_blank" rel="noopener">Spotify</a>
-        <a class="btn" href="https://open.spotify.com/playlist/6NzQaVaofrf9kpRCx0sKkj" target="_blank" rel="noopener">KPDH Popular Songs</a>
-      </nav>
-
-      <footer class="footer">Connect with me: <strong>Discord: jinu_kpop</strong></footer>
+      <footer>Connect: <strong>Discord — jinu_kpop</strong></footer>
     </div>
-  </main>
+  </section>
 
-  <!-- audio (empty src — script fills it) -->
   <audio id="bgMusic" preload="auto"></audio>
-
   <script src="script.js"></script>
 </body>
 </html>
