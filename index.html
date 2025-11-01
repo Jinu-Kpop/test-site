@@ -1,183 +1,196 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Welcome to Jinu's Space</title>
-<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
-<style>
-  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Welcome to Jinu’s World</title>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; font-family:'Poppins',sans-serif; }
+    body { overflow:hidden; background: radial-gradient(circle at center, #001a33, #000814); color:#fff; }
+    .stars { position:fixed; width:100%; height:100%; z-index:-1; pointer-events:none; }
 
-  body {
-    overflow: hidden;
-    background: radial-gradient(circle at center, #001F3F, #000814);
-    color: white;
-  }
+    .star {
+      position:absolute;
+      background: #00cfff;
+      width:2px;
+      height:2px;
+      opacity:0.8;
+      border-radius:50%;
+      animation: moveStar linear infinite;
+    }
+    @keyframes moveStar {
+      from { transform: translateY(0) scale(1); opacity:1; }
+      to   { transform: translateY(100vh) scale(0.3); opacity:0; }
+    }
 
-  /* Star animation background */
-  .stars {
-    position: fixed;
-    width: 100%;
-    height: 100%;
-    z-index: -1;
-    background: transparent;
-    overflow: hidden;
-  }
+    #welcome {
+      display:flex;
+      flex-direction:column;
+      justify-content:center;
+      align-items:center;
+      height:100vh;
+      text-align:center;
+      background: linear-gradient(135deg, #001f4d, #003366);
+    }
+    #welcome h1 {
+      font-size:3.2rem;
+      color:#00e5ff;
+      text-shadow:0 0 30px #00e5ff;
+      animation: glow 2.5s infinite alternate;
+    }
+    @keyframes glow {
+      from { text-shadow:0 0 15px #00e5ff; }
+      to   { text-shadow:0 0 45px #00e5ff; }
+    }
+    #enter-btn {
+      margin-top:40px;
+      padding:15px 40px;
+      background:#00e5ff;
+      color:#001a33;
+      border:none;
+      border-radius:30px;
+      font-size:1.2rem;
+      cursor:pointer;
+      box-shadow:0 0 20px #00e5ff;
+      transition:transform 0.3s, background 0.3s;
+    }
+    #enter-btn:hover {
+      transform:scale(1.1);
+      background:#00b8d1;
+    }
 
-  .star {
-    position: absolute;
-    width: 2px;
-    height: 2px;
-    background: white;
-    animation: moveStars 8s linear infinite;
-    opacity: 0.8;
-  }
+    /* Main page */
+    #main {
+      display:none;
+      overflow-y:auto;
+      height:100vh;
+      padding:60px 20px 120px 20px;
+      text-align:center;
+      animation: fadeInPage 1s ease forwards;
+    }
+    @keyframes fadeInPage {
+      from { opacity:0; transform:translateY(30px); }
+      to   { opacity:1; transform:translateY(0); }
+    }
 
-  @keyframes moveStars {
-    from { transform: translateY(0) scale(1); opacity: 1; }
-    to { transform: translateY(100vh) scale(0.3); opacity: 0; }
-  }
+    h2 {
+      font-size:2.4rem;
+      color:#00cfff;
+      margin-bottom:20px;
+      text-shadow:0 0 20px #00cfff;
+    }
 
-  /* Welcome Page */
-  #welcome {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    align-items: center;
-    height: 100vh;
-    text-align: center;
-    background: linear-gradient(135deg, #001f3f, #003366);
-  }
+    .imgur-embed-pub {
+      border-radius:50%;
+      overflow:hidden;
+      max-width:200px;
+      margin:0 auto 30px auto;
+      box-shadow:0 0 30px #00cfff;
+    }
 
-  #welcome h1 {
-    font-size: 3rem;
-    color: #87CEFA;
-    text-shadow: 0 0 25px #00bfff;
-    animation: glow 2s infinite alternate;
-  }
+    .about {
+      max-width:800px;
+      margin:0 auto 30px;
+      font-size:1.1rem;
+      line-height:1.8;
+      color:#e0f7ff;
+      background: rgba(255,255,255,0.05);
+      padding:25px;
+      border-radius:20px;
+      box-shadow:0 0 25px rgba(0,207,255,0.3);
+      backdrop-filter: blur(8px);
+    }
 
-  @keyframes glow {
-    from { text-shadow: 0 0 10px #00bfff; }
-    to { text-shadow: 0 0 40px #00bfff; }
-  }
+    .buttons {
+      display:flex;
+      flex-wrap:wrap;
+      justify-content:center;
+      gap:15px;
+      margin-bottom:40px;
+    }
+    .btn {
+      background:#006b9c;
+      color:#fff;
+      padding:15px 30px;
+      border-radius:30px;
+      text-decoration:none;
+      font-weight:600;
+      transition:transform 0.3s, background 0.3s, box-shadow 0.3s;
+    }
+    .btn:hover {
+      background:#005075;
+      transform:scale(1.1);
+      box-shadow:0 0 15px #00cfff;
+    }
 
-  #enter-btn {
-    margin-top: 40px;
-    background: #00bfff;
-    color: white;
-    border: none;
-    padding: 15px 40px;
-    border-radius: 50px;
-    font-size: 1.2rem;
-    cursor: pointer;
-    box-shadow: 0 0 20px #00bfff;
-    transition: 0.3s;
-  }
+    audio {
+      margin-top:20px;
+      outline:none;
+      width:90%;
+      max-width:400px;
+      filter: drop-shadow(0 0 20px #00cfff);
+    }
 
-  #enter-btn:hover {
-    background: #0099cc;
-    transform: scale(1.1);
-  }
+    .visualizer {
+      margin:30px auto;
+      width:90%;
+      max-width:400px;
+      height:10px;
+      background:#00334d;
+      border-radius:10px;
+      overflow:hidden;
+      position:relative;
+    }
+    .bar {
+      position:absolute;
+      bottom:0;
+      width:4px;
+      height:0;
+      background:#00e5ff;
+      animation: bounce 1.5s infinite ease-in-out;
+    }
+    @keyframes bounce {
+      0%,100% { height:5px; }
+      50% { height:100%; }
+    }
 
-  /* Main Page */
-  #main {
-    display: none;
-    text-align: center;
-    padding: 40px 20px;
-    animation: fadeIn 1s ease-in forwards;
-  }
-
-  @keyframes fadeIn {
-    from { opacity: 0; transform: translateY(50px); }
-    to { opacity: 1; transform: translateY(0); }
-  }
-
-  h2 {
-    font-size: 2.5rem;
-    color: #87CEEB;
-    margin-bottom: 15px;
-    text-shadow: 0 0 20px #00bfff;
-  }
-
-  .about {
-    max-width: 800px;
-    margin: 30px auto;
-    font-size: 1.1rem;
-    line-height: 1.8;
-    color: #E0FFFF;
-    background: rgba(255, 255, 255, 0.1);
-    padding: 25px;
-    border-radius: 20px;
-    box-shadow: 0 0 30px rgba(0,191,255,0.3);
-    backdrop-filter: blur(8px);
-  }
-
-  .buttons {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 15px;
-    margin-top: 20px;
-  }
-
-  .btn {
-    background: #0077CC;
-    color: white;
-    padding: 15px 25px;
-    border-radius: 30px;
-    text-decoration: none;
-    transition: 0.3s;
-    font-weight: 600;
-  }
-
-  .btn:hover {
-    background: #005fa3;
-    transform: scale(1.1);
-    box-shadow: 0 0 15px #00bfff;
-  }
-
-  footer {
-    margin-top: 40px;
-    font-size: 0.9rem;
-    color: #87CEEB;
-  }
-
-  audio {
-    margin-top: 20px;
-    outline: none;
-    filter: drop-shadow(0 0 15px #00bfff);
-  }
-</style>
+    footer {
+      margin-top:60px;
+      font-size:0.9rem;
+      color:#00cfff;
+    }
+  </style>
 </head>
 <body>
-  <!-- Moving stars -->
   <div class="stars" id="stars"></div>
 
-  <!-- Welcome Page -->
   <section id="welcome">
-    <h1>🌌 Welcome to Jinu’s World 🌌</h1>
+    <h1>🌌 Jump Into My World 🌌</h1>
     <button id="enter-btn">Jump In</button>
   </section>
 
-  <!-- Main Page -->
   <section id="main">
     <h2>Hey, I’m Jinu!</h2>
-    
-    <!-- Profile Embed -->
     <blockquote class="imgur-embed-pub" lang="en" data-id="a/sztJPpR" data-context="false">
       <a href="//imgur.com/a/sztJPpR"></a>
     </blockquote>
     <script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
 
     <div class="about">
-      Tech runs through my veins. Whenever there’s a new gadget, app, or breakthrough, I’m on it—testing, exploring, and geeking out like there’s no tomorrow. Technology isn’t just what I do; it’s how I see the world.<br><br>
-      I’m friendly, positive, and open-minded, but here’s the deal: life’s too short for negativity, so I don’t have time for hate or toxic vibes. Keep it kind, or keep walking!<br><br>
-      Big fan alert: I absolutely love KPDH (K-Pop Demon Hunter) from Sony Animation. Its energy, story, and style? Legendary. Oh, and my favorite color? Sky blue—calm, limitless, and inspiring, just like how I try to approach life.<br><br>
-      Am I perfect? Nope. Like everyone, I stumble, learn, and grow every day. But that’s what makes life exciting—and keeps things real.<br><br>
-      This space is where I share my tech obsessions, discoveries, and ideas—all served with a dash of positivity and curiosity. So stick around, explore, and let’s see what’s possible together!
+      <p>Tech runs through my veins. Whenever there’s a new gadget, app, or breakthrough, I’m on it—testing, exploring, and geeking out like there’s no tomorrow. Technology isn’t just what I do; it’s how I see the world.</p>
+      <p>I’m friendly, positive, and open-minded, but here’s the deal: life’s too short for negativity, so I don’t have time for hate or toxic vibes. Keep it kind, or keep walking!</p>
+      <p>Big fan alert: I absolutely love KPDH (K-Pop Demon Hunter) from Sony Animation. Its energy, story, and style? Legendary. Oh, and my favorite color? Sky blue—calm, limitless, and inspiring, just like how I try to approach life.</p>
+      <p>Am I perfect? Nope. Like everyone, I stumble, learn, and grow every day. But that’s what makes life exciting—and keeps things real.</p>
+      <p>This space is where I share my tech obsessions, discoveries, and ideas—all served with a dash of positivity and curiosity. So stick around, explore, and let’s see what’s possible together!</p>
     </div>
 
-    <!-- Links -->
+    <div class="visualizer" id="visualizer"></div>
+    <audio id="bgMusic" loop>
+      <source src="https://drive.google.com/uc?export=download&id=1DIS3r7WgD9jRNtAnq9TgAco5AxvbzRc7" type="audio/mp3">
+      Your browser does not support audio.
+    </audio>
+
     <div class="buttons">
       <a class="btn" href="https://discord.gg/UEFJc6AdS9" target="_blank">Discord: IDK Community</a>
       <a class="btn" href="https://github.com/Jinu-Kpop" target="_blank">GitHub</a>
@@ -186,37 +199,48 @@
       <a class="btn" href="https://open.spotify.com/playlist/6z81HIUuSRHymGh8D5lX1t?si=e81c056c630741e1" target="_blank">All KPDH Songs</a>
     </div>
 
-    <audio id="bg-music" loop>
-      <source src="https://drive.google.com/uc?export=download&id=1DIS3r7WgD9jRNtAnq9TgAco5AxvbzRc7" type="audio/mp3">
-    </audio>
-
     <footer>Connect with me: <strong>Discord: jinu_kpop</strong></footer>
   </section>
 
   <script>
-    // Star creation
+    // Generate stars
     const starsContainer = document.getElementById('stars');
-    for (let i = 0; i < 100; i++) {
+    for (let i = 0; i < 120; i++) {
       const star = document.createElement('div');
       star.className = 'star';
-      star.style.left = Math.random() * 100 + 'vw';
-      star.style.top = Math.random() * -100 + 'vh';
-      star.style.animationDelay = Math.random() * 8 + 's';
-      star.style.animationDuration = 6 + Math.random() * 5 + 's';
+      star.style.left = Math.random()*100 + 'vw';
+      star.style.top = Math.random()*-100 + 'vh';
+      star.style.animationDelay = Math.random()*5 + 's';
+      star.style.animationDuration = 4 + Math.random()*6 + 's';
       starsContainer.appendChild(star);
     }
 
-    // Transition and music control
-    const enterBtn = document.getElementById('enter-btn');
+    // Enter button logic
+    const btn = document.getElementById('enter-btn');
     const welcome = document.getElementById('welcome');
     const main = document.getElementById('main');
-    const music = document.getElementById('bg-music');
+    const music = document.getElementById('bgMusic');
+    const viz = document.getElementById('visualizer');
 
-    enterBtn.addEventListener('click', () => {
+    btn.addEventListener('click', () => {
       welcome.style.display = 'none';
       main.style.display = 'block';
-      music.play().catch(e => console.log("Autoplay blocked, user gesture needed"));
+      document.body.style.overflow = 'auto';
+      music.play().catch(e => console.log('Autoplay prevented'));
+      createBars();
     });
+
+    // Visualiser bars
+    function createBars(){
+      for(let i=0;i<50;i++){
+        const bar = document.createElement('div');
+        bar.className = 'bar';
+        bar.style.left = (i * (100/50)) + '%';
+        bar.style.animationDelay = (i * 0.05) + 's';
+        viz.appendChild(bar);
+      }
+    }
   </script>
+
 </body>
 </html>
