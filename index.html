@@ -1,51 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>🎃 Happy Halloween - Jinu Kpop</title>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Jinu Kpop - Tech & KPDH Fan</title>
   <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
-  <!-- Welcome Screen -->
-  <div id="welcome">
-    <h1>🎃 Welcome to Jinu’s Halloween Space 👻</h1>
-    <button id="enterBtn">Enter</button>
+  <!-- Welcome screen -->
+  <div id="welcome" class="screen active">
+    <div class="welcome-inner">
+      <h1>Welcome to Jinu Kpop 🌌</h1>
+      <button id="enterBtn" class="btn">Enter</button>
+    </div>
   </div>
 
-  <!-- Main Page -->
-  <div class="container" id="main">
-    <img src="assets/pfp.png" alt="Profile Photo" class="profile">
-    <h1>Jinu Kpop</h1>
-    <h2>Tech Lover & KPDH Fanatic</h2>
+  <!-- Main content -->
+  <main id="main" class="screen">
+    <div class="stars" aria-hidden="true"></div>
 
-    <div class="about">
-      <p><strong>Hey, I’m Jinu!</strong></p>
-      <p>Tech runs through my veins — and tonight it’s running spooky! 💀</p>
-      <p>Welcome to my digital Halloween space — with glowing stars, chill beats & friendly ghosts!</p>
-      <p>Keep it kind, stay spooky, and vibe with the code 👻</p>
+    <div class="container">
+      <img src="assets/pfp.png" alt="Profile" class="profile" />
+      <h1 class="title">Jinu Kpop</h1>
+      <h2 class="subtitle">Tech Lover & KPDH Fanatic</h2>
+
+      <section class="about">
+        <p><strong>Hey, I’m Jinu!</strong></p>
+        <p>Tech runs through my veins. Whenever there’s a new gadget, app, or breakthrough, I’m on it—testing, exploring, and geeking out like there’s no tomorrow. Technology isn’t just what I do; it’s how I see the world.</p>
+        <p>I’m friendly, positive, and open-minded, but here’s the deal: life’s too short for negativity, so I don’t have time for hate or toxic vibes. Keep it kind, or keep walking!</p>
+        <p>Big fan alert: I absolutely love <strong>KPDH (K-Pop Demon Hunter)</strong> from Sony Animation. Its energy, story, and style? Legendary. Oh, and my favorite color? Sky blue—calm, limitless, and inspiring, just like how I try to approach life.</p>
+        <p>Am I perfect? Nope. Like everyone, I stumble, learn, and grow every day. But that’s what makes life exciting—and keeps things real.</p>
+        <p>This space is where I share my tech obsessions, discoveries, and ideas—all served with a dash of positivity and curiosity. So stick around, explore, and let’s see what’s possible together!</p>
+      </section>
+
+      <nav class="links">
+        <a class="btn" href="https://discord.gg/UEFJc6AdS9" target="_blank" rel="noopener">Discord</a>
+        <a class="btn" href="https://github.com/Jinu-Kpop" target="_blank" rel="noopener">GitHub</a>
+        <a class="btn" href="https://open.spotify.com/user/31dqjjdh6z7iv6h2uicfxpzorwpi" target="_blank" rel="noopener">Spotify</a>
+        <a class="btn" href="https://open.spotify.com/playlist/6NzQaVaofrf9kpRCx0sKkj" target="_blank" rel="noopener">KPDH Popular Songs</a>
+      </nav>
+
+      <footer class="footer">Connect with me: <strong>Discord: jinu_kpop</strong></footer>
     </div>
+  </main>
 
-    <div class="buttons">
-      <a class="btn" href="https://discord.gg/UEFJc6AdS9" target="_blank">Discord</a>
-      <a class="btn" href="https://github.com/Jinu-Kpop" target="_blank">GitHub</a>
-      <a class="btn" href="https://open.spotify.com/user/31dqjjdh6z7iv6h2uicfxpzorwpi" target="_blank">Spotify</a>
-    </div>
-
-    <footer>🎃 Happy Halloween — Stay Spooky!</footer>
-  </div>
-
-  <!-- Stars background -->
-  <div id="stars"></div>
-
-  <!-- Halloween Decorations -->
-  <img src="https://www.pngmart.com/files/7/Halloween-Pumpkin-PNG-Image.png" class="pumpkin" alt="Pumpkin">
-  <img src="https://www.pngmart.com/files/22/Bat-PNG-Image.png" class="bat bat1" alt="Bat">
-  <img src="https://www.pngmart.com/files/22/Bat-PNG-Image.png" class="bat bat2" alt="Bat">
-
-  <!-- Background Music -->
-  <audio id="bgMusic" loop></audio>
+  <!-- audio (empty src — script fills it) -->
+  <audio id="bgMusic" preload="auto"></audio>
 
   <script src="script.js"></script>
 </body>
