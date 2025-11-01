@@ -1,137 +1,133 @@
-* {
-  margin: 0;
-  padding: 0;
-  box-sizing: border-box;
-  font-family: "Montserrat", sans-serif;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Montserrat', sans-serif; }
 
 body {
-  background: radial-gradient(circle at top, #0d1b2a, #000814);
-  overflow-x: hidden;
+  background: radial-gradient(circle at bottom, #001133, #000);
   color: #fff;
+  overflow: hidden;
+  display: flex;
+  justify-content: center;
+  align-items: center;
   height: 100vh;
 }
 
-/* --- Screens --- */
-.screen {
-  position: fixed;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  display: none;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column;
-}
-
-.screen.active {
-  display: flex;
-}
-
-/* --- Welcome Screen --- */
-#welcome-screen {
-  background: radial-gradient(circle at top, #001f3f, #000);
+#welcome {
+  text-align: center;
   animation: fadeIn 2s ease-in;
 }
-
-.welcome-text h1 {
-  font-size: 3em;
-  color: #66ccff;
-  margin-bottom: 20px;
-  text-shadow: 0 0 20px #66ccff;
+#welcome h1 {
+  font-size: 3rem;
+  color: #ff8800;
+  text-shadow: 0 0 15px #ff5500;
 }
-
-.btn {
-  background: #0077cc;
+#welcome button {
+  margin-top: 30px;
+  padding: 15px 40px;
+  font-size: 1.3rem;
+  background: #ff6600;
   border: none;
-  color: #fff;
-  padding: 12px 30px;
-  border-radius: 40px;
+  border-radius: 50px;
   cursor: pointer;
-  font-weight: 600;
-  font-size: 1.1em;
-  transition: all 0.3s;
+  color: #fff;
+  box-shadow: 0 0 20px #ff6600;
+  transition: 0.3s;
 }
-
-.btn:hover {
-  background: #3399ff;
+#welcome button:hover {
+  background: #cc4400;
   transform: scale(1.1);
 }
 
-/* --- Main Page --- */
 .container {
+  display: none;
   text-align: center;
-  padding: 40px;
-  max-width: 900px;
-  z-index: 2;
+  max-width: 850px;
+  padding: 20px;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 20px;
+  box-shadow: 0 0 30px rgba(255, 140, 0, 0.5);
+  backdrop-filter: blur(8px);
+  overflow-y: auto;
+  height: 90vh;
 }
 
-.profile-photo {
-  width: 180px;
-  height: 180px;
+.profile {
+  width: 160px;
+  height: 160px;
   border-radius: 50%;
-  border: 4px solid #66ccff;
-  margin-bottom: 20px;
-  box-shadow: 0 0 30px #3399ff;
+  border: 3px solid #ff6600;
+  margin: 20px auto;
+  display: block;
+  box-shadow: 0 0 20px #ff8800;
   animation: float 3s ease-in-out infinite;
+  object-fit: cover;
 }
+
+h1 { color: #ffa733; }
+h2 { color: #ffdd99; }
 
 .about {
-  font-size: 1.1em;
-  color: #e0f7ff;
-  margin: 10px 0;
+  margin: 20px 0;
+  font-size: 1.1rem;
   line-height: 1.6;
-  animation: fadeUp 1.5s ease-in-out;
+  background: rgba(255, 255, 255, 0.1);
+  border-radius: 15px;
+  padding: 15px;
 }
 
-.buttons {
-  margin-top: 30px;
-  display: flex;
-  justify-content: center;
-  gap: 15px;
+.buttons { margin-top: 20px; display: flex; justify-content: center; flex-wrap: wrap; gap: 10px; }
+.btn {
+  padding: 12px 25px;
+  background: #ff6600;
+  color: white;
+  border-radius: 40px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.btn:hover { background: #cc4400; transform: scale(1.1); }
+
+footer {
+  margin-top: 25px;
+  font-size: 1rem;
+  color: #ffaa66;
 }
 
-/* --- Animations --- */
-@keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
-}
+/* Animations */
+@keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+@keyframes float { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
 
-@keyframes fadeUp {
-  from { opacity: 0; transform: translateY(40px); }
-  to { opacity: 1; transform: translateY(0); }
-}
-
-@keyframes float {
-  0%, 100% { transform: translateY(0); }
-  50% { transform: translateY(-15px); }
-}
-
-/* --- Stars --- */
-.stars {
-  position: absolute;
-  top: 0;
-  left: 0;
+/* Stars */
+#stars {
+  position: fixed;
   width: 100%;
   height: 100%;
-  overflow: hidden;
-  z-index: 1;
+  background: transparent url('https://i.imgur.com/9xA0Fgr.png') repeat top center;
+  animation: stars 200s linear infinite;
+  z-index: -1;
+  opacity: 0.4;
+}
+@keyframes stars {
+  from { background-position: 0 0; }
+  to { background-position: 10000px 10000px; }
 }
 
-.stars::before, .stars::after {
-  content: "";
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: transparent url("https://www.transparenttextures.com/patterns/stardust.png") repeat;
-  animation: moveStars 60s linear infinite;
-  opacity: 0.6;
+/* Halloween Decorations */
+.pumpkin {
+  position: fixed;
+  bottom: 10px;
+  right: 20px;
+  width: 80px;
+  opacity: 0.8;
+  animation: float 3s ease-in-out infinite;
 }
+.bat {
+  position: fixed;
+  width: 60px;
+  opacity: 0.8;
+  animation: fly 10s linear infinite;
+}
+.bat1 { top: 10%; left: -10%; animation-delay: 0s; }
+.bat2 { top: 30%; left: -15%; animation-delay: 5s; }
 
-@keyframes moveStars {
-  from { transform: translate(0, 0); }
-  to { transform: translate(-1000px, 1000px); }
+@keyframes fly {
+  from { transform: translateX(-100px) rotate(10deg); }
+  to { transform: translateX(120vw) rotate(-10deg); }
 }
