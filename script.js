@@ -1,81 +1,84 @@
-// --- Welcome transition ---
-const enterBtn = document.getElementById("enterBtn");
-const welcome = document.getElementById("welcome");
-const main = document.getElementById("main");
-const music = document.getElementById("bgMusic");
+// robust, minimal script — drop into repo and ensure assets exist
+document.addEventListener('DOMContentLoaded', () => {
+  const enterBtn = document.getElementById('enterBtn');
+  const welcome = document.getElementById('welcome');
+  const main = document.getElementById('main');
+  const audio = document.getElementById('bgMusic');
+  const canvas = document.getElementById('starsCanvas');
+  const ctx = canvas.getContext ? canvas.getContext('2d') : null;
 
-// your music files
-const songs = [
-  "assets/song1.mp3",
-  "assets/song2.mp3"
-];
-let current = 0;
+  // ===== songs: edit filenames to match your assets folder =====
+  const songs = [
+    'assets/song1.mp3' // add more like 'assets/song2.mp3'
+  ];
+  let current = 0;
 
-enterBtn.addEventListener("click", () => {
-  welcome.style.display = "none";
-  main.style.display = "block";
-  document.body.style.overflow = "auto";
-
-  playSong();
-});
-
-music.addEventListener("ended", () => {
-  current = (current + 1) % songs.length;
-  playSong();
-});
-
-function playSong() {
-  if (songs.length > 0) {
-    music.src = songs[current];
-    music.play().catch(err => console.log("Autoplay blocked:", err));
+  function playSong() {
+    if (!songs.length) return;
+    audio.src = songs[current];
+    // try play, swallow promise rejection (browsers may block autoplay)
+    audio.play().catch(err => {
+      // not fatal — user clicked Enter which is a gesture; but some browsers still block
+      console.warn('Audio play blocked or failed:', err);
+    });
   }
-}
 
-// --- Stars animation ---
-const canvas = document.getElementById("stars");
-const ctx = canvas.getContext("2d");
-canvas.width = window.innerWidth;
-canvas.height = window.innerHeight;
-
-let stars = [];
-for (let i = 0; i < 150; i++) {
-  stars.push({
-    x: Math.random() * canvas.width,
-    y: Math.random() * canvas.height,
-    r: Math.random() * 2,
-    d: Math.random() * 1.5,
+  audio.addEventListener('ended', () => {
+    current = (current + 1) % songs.length;
+    playSong();
   });
-}
 
-function drawStars() {
-  ctx.clearRect(0, 0, canvas.width, canvas.height);
-  ctx.fillStyle = "white";
-  ctx.beginPath();
-  for (let i = 0; i < stars.length; i++) {
-    const s = stars[i];
-    ctx.moveTo(s.x, s.y);
-    ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2, true);
-  }
-  ctx.fill();
-  moveStars();
-}
+  enterBtn.addEventListener('click', () => {
+    // show main, hide welcome
+    welcome.classList.remove('active');
+    welcome.style.display = 'none';
+    main.classList.add('active');
+    main.style.display = 'block';
+    // allow page scrolling
+    document.body.style.overflow = 'auto';
+    // start music
+    playSong();
+  });
 
-let angle = 0;
-function moveStars() {
-  angle += 0.01;
-  for (let i = 0; i < stars.length; i++) {
-    const s = stars[i];
-    s.y += Math.cos(angle + s.d) + 1 + s.r / 2;
-    s.x += Math.sin(angle) * 0.5;
-    if (s.y > canvas.height) {
-      stars[i] = { x: Math.random() * canvas.width, y: 0, r: s.r, d: s.d };
+  // ------- simple canvas starfield -------
+  if (ctx) {
+    function resizeCanvas() {
+      canvas.width = window.innerWidth;
+      canvas.height = window.innerHeight;
     }
-  }
-}
+    resizeCanvas();
+    window.addEventListener('resize', resizeCanvas);
 
-setInterval(drawStars, 50);
+    const stars = [];
+    const STAR_COUNT = Math.min(250, Math.floor(window.innerWidth * 0.08));
+    for (let i = 0; i < STAR_COUNT; i++) {
+      stars.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: 0.6 + Math.random() * 1.6,
+        vx: -0.2 + Math.random() * 0.4,
+        vy: 0.2 + Math.random() * 0.8,
+        alpha: 0.2 + Math.random() * 0.9,
+      });
+    }
 
-window.addEventListener("resize", () => {
-  canvas.width = window.innerWidth;
-  canvas.height = window.innerHeight;
-});
+    function draw() {
+      ctx.clearRect(0, 0, canvas.width, canvas.height);
+      for (let s of stars) {
+        ctx.beginPath();
+        ctx.fillStyle = `rgba(255,255,255,${s.alpha})`;
+        ctx.arc(s.x, s.y, s.r, 0, Math.PI * 2);
+        ctx.fill();
+        s.x += s.vx;
+        s.y += s.vy;
+        // loop back
+        if (s.y > canvas.height + 10) s.y = -10;
+        if (s.x < -10) s.x = canvas.width + 10;
+        if (s.x > canvas.width + 10) s.x = -10;
+      }
+      requestAnimationFrame(draw);
+    }
+    requestAnimationFrame(draw);
+  } // end if ctx
+
+}); // DOMContentLoaded
