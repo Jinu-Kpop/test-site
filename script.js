@@ -1,22 +1,22 @@
-function enterSite() {
+document.getElementById("enterBtn").addEventListener("click", function() {
   document.getElementById("welcome").style.display = "none";
   document.getElementById("main").style.display = "block";
   document.body.style.overflow = "auto";
 
-  // Start background music
+  // Music setup
   const songs = [
     "assets/song1.mp3",
     "assets/song2.mp3"
   ];
-  const audio = document.getElementById("bgMusic");
-  let current = 0;
+  const music = document.getElementById("bgMusic");
+  let index = 0;
 
-  audio.src = songs[current];
-  audio.play().catch(() => alert("Click again to allow music 🎧"));
+  music.src = songs[index];
+  music.play().catch(() => alert("Click again to allow music 🎧"));
 
-  audio.addEventListener("ended", () => {
-    current = (current + 1) % songs.length;
-    audio.src = songs[current];
-    audio.play();
+  music.addEventListener("ended", () => {
+    index = (index + 1) % songs.length;
+    music.src = songs[index];
+    music.play();
   });
-}
+});
