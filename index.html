@@ -1,60 +1,52 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Welcome | Jinu Kpop</title>
-  <link rel="stylesheet" href="style.css" />
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>🎃 Happy Halloween - Jinu Kpop</title>
+  <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
   <!-- Welcome Screen -->
-  <div id="welcome-screen" class="screen active">
-    <div class="welcome-text">
-      <h1 class="fade-in">Welcome to Jinu’s World</h1>
-      <button id="enter-btn" class="btn">Enter</button>
-    </div>
+  <div id="welcome">
+    <h1>🎃 Welcome to Jinu’s Halloween Space 👻</h1>
+    <button onclick="enterSite()">Enter</button>
   </div>
 
-  <!-- Main Content -->
-  <div id="main-content" class="screen">
-    <div class="stars"></div>
-    <div class="container">
-      <img src="assets/pfp.png" alt="Profile" class="profile-photo" />
-      <h1>Hey, I’m Jinu!</h1>
-      <p class="about">
-        Tech runs through my veins. Whenever there’s a new gadget, app, or breakthrough,
-        I’m on it—testing, exploring, and geeking out like there’s no tomorrow.
-        Technology isn’t just what I do; it’s how I see the world.
-      </p>
-      <p class="about">
-        I’m friendly, positive, and open-minded, but here’s the deal: life’s too short
-        for negativity, so I don’t have time for hate or toxic vibes. Keep it kind,
-        or keep walking!
-      </p>
-      <p class="about">
-        Big fan alert: I absolutely love <strong>KPDH (K-Pop Demon Hunter)</strong> from Sony Animation.
-        Its energy, story, and style? Legendary. My favorite color? Sky blue—calm,
-        limitless, and inspiring.
-      </p>
-      <p class="about">
-        Am I perfect? Nope. Like everyone, I stumble, learn, and grow every day.
-        But that’s what makes life exciting—and keeps things real.
-      </p>
-      <p class="about">
-        This space is where I share my tech obsessions, discoveries, and ideas—all
-        served with a dash of positivity and curiosity. So stick around, explore,
-        and let’s see what’s possible together!
-      </p>
+  <!-- Main Page -->
+  <div class="container" id="main">
+    <img src="assets/pfp.png" alt="Profile Photo" class="profile">
+    <h1>Jinu Kpop</h1>
+    <h2>Tech Lover & KPDH Fanatic</h2>
 
-      <div class="buttons">
-        <a class="btn" href="https://discord.gg/UEFJc6AdS9" target="_blank">Discord</a>
-        <a class="btn" href="https://github.com/Jinu-Kpop" target="_blank">GitHub</a>
-        <a class="btn" href="https://open.spotify.com/user/31dqjjdh6z7iv6h2uicfxpzorwpi" target="_blank">Spotify</a>
-      </div>
+    <div class="about">
+      <p><strong>Hey, I’m Jinu!</strong></p>
+      <p>Tech runs through my veins. I explore, test, and love all things tech. 🎧</p>
+      <p>And since it’s <strong>Halloween</strong> — welcome to my haunted digital world! 👻</p>
+      <p>Stay chill, stay kind, and enjoy the spooky vibes!</p>
     </div>
+
+    <div class="buttons">
+      <a class="btn" href="https://discord.gg/UEFJc6AdS9" target="_blank">Discord</a>
+      <a class="btn" href="https://github.com/Jinu-Kpop" target="_blank">GitHub</a>
+      <a class="btn" href="https://open.spotify.com/user/31dqjjdh6z7iv6h2uicfxpzorwpi" target="_blank">Spotify</a>
+    </div>
+
+    <footer>🎃 Happy Halloween — Stay Spooky!</footer>
   </div>
 
-  <audio id="bg-music" loop></audio>
+  <!-- Background Stars -->
+  <div id="stars"></div>
+
+  <!-- Halloween Decorations -->
+  <img src="https://i.imgur.com/0tFNHmR.png" class="pumpkin" alt="Pumpkin">
+  <img src="https://i.imgur.com/6bZ4F9b.png" class="bat bat1" alt="Bat">
+  <img src="https://i.imgur.com/6bZ4F9b.png" class="bat bat2" alt="Bat">
+
+  <!-- Music -->
+  <audio id="bgMusic" loop></audio>
+
   <script src="script.js"></script>
 </body>
 </html>
