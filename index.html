@@ -1,164 +1,222 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Jump In 🎵</title>
-  <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Poppins', sans-serif;
-    }
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Welcome to Jinu's Space</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  * { margin: 0; padding: 0; box-sizing: border-box; font-family: 'Poppins', sans-serif; }
 
-    body {
-      overflow: hidden;
-      height: 100vh;
-      background: radial-gradient(ellipse at bottom, #0d1b2a 0%, #000000 100%);
-      color: white;
-    }
+  body {
+    overflow: hidden;
+    background: radial-gradient(circle at center, #001F3F, #000814);
+    color: white;
+  }
 
-    /* --- Animated Star Background --- */
-    .stars {
-      width: 2px;
-      height: 2px;
-      background: white;
-      box-shadow: 
-        100px 200px white, 200px 100px white, 300px 300px white, 400px 50px white,
-        500px 400px white, 600px 200px white, 700px 100px white, 800px 300px white,
-        900px 500px white, 1000px 50px white, 1100px 400px white;
-      animation: animStar 50s linear infinite;
-    }
+  /* Star animation background */
+  .stars {
+    position: fixed;
+    width: 100%;
+    height: 100%;
+    z-index: -1;
+    background: transparent;
+    overflow: hidden;
+  }
 
-    @keyframes animStar {
-      from { transform: translateY(0px); }
-      to { transform: translateY(-1000px); }
-    }
+  .star {
+    position: absolute;
+    width: 2px;
+    height: 2px;
+    background: white;
+    animation: moveStars 8s linear infinite;
+    opacity: 0.8;
+  }
 
-    /* --- Welcome Page --- */
-    .welcome {
-      position: absolute;
-      inset: 0;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-direction: column;
-      background: rgba(0, 0, 0, 0.7);
-      backdrop-filter: blur(10px);
-      z-index: 10;
-      transition: opacity 1s ease;
-    }
+  @keyframes moveStars {
+    from { transform: translateY(0) scale(1); opacity: 1; }
+    to { transform: translateY(100vh) scale(0.3); opacity: 0; }
+  }
 
-    .welcome h1 {
-      font-size: 3rem;
-      color: #fff;
-      text-shadow: 0 0 15px #00ffff;
-      animation: glow 2s infinite alternate;
-    }
+  /* Welcome Page */
+  #welcome {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    text-align: center;
+    background: linear-gradient(135deg, #001f3f, #003366);
+  }
 
-    @keyframes glow {
-      from { text-shadow: 0 0 10px #00ffff; }
-      to { text-shadow: 0 0 25px #00ccff; }
-    }
+  #welcome h1 {
+    font-size: 3rem;
+    color: #87CEFA;
+    text-shadow: 0 0 25px #00bfff;
+    animation: glow 2s infinite alternate;
+  }
 
-    .enter-btn {
-      margin-top: 30px;
-      padding: 12px 30px;
-      background: linear-gradient(90deg, #00ffff, #0077ff);
-      border: none;
-      border-radius: 50px;
-      font-size: 1.2rem;
-      cursor: pointer;
-      color: #fff;
-      transition: all 0.3s ease;
-    }
+  @keyframes glow {
+    from { text-shadow: 0 0 10px #00bfff; }
+    to { text-shadow: 0 0 40px #00bfff; }
+  }
 
-    .enter-btn:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 20px #00ffff;
-    }
+  #enter-btn {
+    margin-top: 40px;
+    background: #00bfff;
+    color: white;
+    border: none;
+    padding: 15px 40px;
+    border-radius: 50px;
+    font-size: 1.2rem;
+    cursor: pointer;
+    box-shadow: 0 0 20px #00bfff;
+    transition: 0.3s;
+  }
 
-    /* --- Main Page --- */
-    .main {
-      opacity: 0;
-      transform: scale(0.9);
-      transition: all 1s ease;
-      position: absolute;
-      inset: 0;
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-    }
+  #enter-btn:hover {
+    background: #0099cc;
+    transform: scale(1.1);
+  }
 
-    .show {
-      opacity: 1 !important;
-      transform: scale(1) !important;
-    }
+  /* Main Page */
+  #main {
+    display: none;
+    text-align: center;
+    padding: 40px 20px;
+    animation: fadeIn 1s ease-in forwards;
+  }
 
-    .profile {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      object-fit: cover;
-      border: 3px solid #00ffff;
-      box-shadow: 0 0 30px #00ffff;
-      animation: float 4s ease-in-out infinite;
-    }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(50px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
 
-    @keyframes float {
-      0%, 100% { transform: translateY(0px); }
-      50% { transform: translateY(-15px); }
-    }
+  h2 {
+    font-size: 2.5rem;
+    color: #87CEEB;
+    margin-bottom: 15px;
+    text-shadow: 0 0 20px #00bfff;
+  }
 
-    h2 {
-      margin-top: 20px;
-      font-size: 2rem;
-      text-shadow: 0 0 10px #00ffff;
-    }
+  .about {
+    max-width: 800px;
+    margin: 30px auto;
+    font-size: 1.1rem;
+    line-height: 1.8;
+    color: #E0FFFF;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 25px;
+    border-radius: 20px;
+    box-shadow: 0 0 30px rgba(0,191,255,0.3);
+    backdrop-filter: blur(8px);
+  }
 
-    audio {
-      margin-top: 30px;
-      width: 300px;
-      outline: none;
-      border-radius: 10px;
-      box-shadow: 0 0 20px #00ffff;
-    }
-  </style>
+  .buttons {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+  }
+
+  .btn {
+    background: #0077CC;
+    color: white;
+    padding: 15px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    transition: 0.3s;
+    font-weight: 600;
+  }
+
+  .btn:hover {
+    background: #005fa3;
+    transform: scale(1.1);
+    box-shadow: 0 0 15px #00bfff;
+  }
+
+  footer {
+    margin-top: 40px;
+    font-size: 0.9rem;
+    color: #87CEEB;
+  }
+
+  audio {
+    margin-top: 20px;
+    outline: none;
+    filter: drop-shadow(0 0 15px #00bfff);
+  }
+</style>
 </head>
 <body>
-  <div class="stars"></div>
+  <!-- Moving stars -->
+  <div class="stars" id="stars"></div>
 
   <!-- Welcome Page -->
-  <div class="welcome" id="welcome">
-    <h1>Welcome, Traveler ✨</h1>
-    <button class="enter-btn" onclick="enterSite()">Click to Jump In</button>
-  </div>
+  <section id="welcome">
+    <h1>🌌 Welcome to Jinu’s World 🌌</h1>
+    <button id="enter-btn">Jump In</button>
+  </section>
 
-  <!-- Main Player Page -->
-  <div class="main" id="main">
-    <img src="https://i.imgur.com/sztJPpR.png" alt="Profile" class="profile">
-    <h2>Now Playing 🎶</h2>
-    <audio id="music" controls autoplay loop>
+  <!-- Main Page -->
+  <section id="main">
+    <h2>Hey, I’m Jinu!</h2>
+    
+    <!-- Profile Embed -->
+    <blockquote class="imgur-embed-pub" lang="en" data-id="a/sztJPpR" data-context="false">
+      <a href="//imgur.com/a/sztJPpR"></a>
+    </blockquote>
+    <script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
+
+    <div class="about">
+      Tech runs through my veins. Whenever there’s a new gadget, app, or breakthrough, I’m on it—testing, exploring, and geeking out like there’s no tomorrow. Technology isn’t just what I do; it’s how I see the world.<br><br>
+      I’m friendly, positive, and open-minded, but here’s the deal: life’s too short for negativity, so I don’t have time for hate or toxic vibes. Keep it kind, or keep walking!<br><br>
+      Big fan alert: I absolutely love KPDH (K-Pop Demon Hunter) from Sony Animation. Its energy, story, and style? Legendary. Oh, and my favorite color? Sky blue—calm, limitless, and inspiring, just like how I try to approach life.<br><br>
+      Am I perfect? Nope. Like everyone, I stumble, learn, and grow every day. But that’s what makes life exciting—and keeps things real.<br><br>
+      This space is where I share my tech obsessions, discoveries, and ideas—all served with a dash of positivity and curiosity. So stick around, explore, and let’s see what’s possible together!
+    </div>
+
+    <!-- Links -->
+    <div class="buttons">
+      <a class="btn" href="https://discord.gg/UEFJc6AdS9" target="_blank">Discord: IDK Community</a>
+      <a class="btn" href="https://github.com/Jinu-Kpop" target="_blank">GitHub</a>
+      <a class="btn" href="https://open.spotify.com/user/31dqjjdh6z7iv6h2uicfxpzorwpi?si=a4c07eab4856416d" target="_blank">Spotify Profile</a>
+      <a class="btn" href="https://open.spotify.com/playlist/6NzQaVaofrf9kpRCx0sKkj?si=82f9aaec729b46f0" target="_blank">KPDH Popular Songs</a>
+      <a class="btn" href="https://open.spotify.com/playlist/6z81HIUuSRHymGh8D5lX1t?si=e81c056c630741e1" target="_blank">All KPDH Songs</a>
+    </div>
+
+    <audio id="bg-music" loop>
       <source src="https://drive.google.com/uc?export=download&id=1DIS3r7WgD9jRNtAnq9TgAco5AxvbzRc7" type="audio/mp3">
-      Your browser does not support audio.
     </audio>
-  </div>
+
+    <footer>Connect with me: <strong>Discord: jinu_kpop</strong></footer>
+  </section>
 
   <script>
+    // Star creation
+    const starsContainer = document.getElementById('stars');
+    for (let i = 0; i < 100; i++) {
+      const star = document.createElement('div');
+      star.className = 'star';
+      star.style.left = Math.random() * 100 + 'vw';
+      star.style.top = Math.random() * -100 + 'vh';
+      star.style.animationDelay = Math.random() * 8 + 's';
+      star.style.animationDuration = 6 + Math.random() * 5 + 's';
+      starsContainer.appendChild(star);
+    }
+
+    // Transition and music control
+    const enterBtn = document.getElementById('enter-btn');
     const welcome = document.getElementById('welcome');
     const main = document.getElementById('main');
-    const music = document.getElementById('music');
+    const music = document.getElementById('bg-music');
 
-    function enterSite() {
-      welcome.style.opacity = 0;
-      setTimeout(() => {
-        welcome.style.display = 'none';
-        main.classList.add('show');
-        music.play();
-      }, 1000);
-    }
+    enterBtn.addEventListener('click', () => {
+      welcome.style.display = 'none';
+      main.style.display = 'block';
+      music.play().catch(e => console.log("Autoplay blocked, user gesture needed"));
+    });
   </script>
 </body>
 </html>
